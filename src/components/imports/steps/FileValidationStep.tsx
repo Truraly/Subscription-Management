@@ -14,14 +14,14 @@ export function FileValidationStep({ file, progress }: FileValidationStepProps) 
         <div className="space-y-1 flex-1">
           <p className="font-medium">{file?.name}</p>
           <p className="text-sm text-muted-foreground">
-            {(file?.size && (file.size / 1024).toFixed(1) + " KB") || "Unknown size"}
+            {(file?.size && (file.size / 1024).toFixed(1) + " KB") || "未知大小"}
           </p>
         </div>
       </div>
       
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium">Validating file...</p>
+          <p className="text-sm font-medium">正在验证文件...</p>
           <p className="text-sm text-muted-foreground">{progress}%</p>
         </div>
         <Progress value={progress} />

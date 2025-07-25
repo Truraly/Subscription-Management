@@ -21,16 +21,16 @@ export function RecentlyPaid({ subscriptions, className }: RecentlyPaidProps) {
   return (
     <Card className={cn("min-h-[200px] flex flex-col", className)}>
       <CardHeader className="flex-shrink-0">
-        <CardTitle className="text-lg">Recently Paid</CardTitle>
+        <CardTitle className="text-lg">最近付款</CardTitle>
         <CardDescription>
-          Subscriptions paid in the last 7 days
+          过去7天内已付款的订阅
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
         {subscriptions.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center">
             <HandCoins className="h-10 w-10 text-muted-foreground opacity-50 mb-2" />
-            <p className="text-muted-foreground">No subscriptions paid in the last 7 days</p>
+            <p className="text-muted-foreground">过去7天内没有订阅付款</p>
           </div>
         ) : (
           <div className="space-y-4 flex-1">
@@ -51,7 +51,7 @@ export function RecentlyPaid({ subscriptions, className }: RecentlyPaidProps) {
                       {formatWithUserCurrency(subscription.amount, subscription.currency)}
                     </div>
                     <div className="text-xs text-muted-foreground flex items-center gap-1">
-                      Paid on: {formatDate(subscription.lastBillingDate!)}
+                      付款日期：{formatDate(subscription.lastBillingDate!)}
                     </div>
                   </div>
                 </div>

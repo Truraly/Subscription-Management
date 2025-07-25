@@ -11,9 +11,9 @@ export function CompleteStep({ subscriptionCount }: CompleteStepProps) {
         <Check className="h-8 w-8 text-green-600" />
       </div>
       <div className="space-y-2">
-        <h3 className="text-lg font-medium">Import Completed</h3>
+        <h3 className="text-lg font-medium">导入完成</h3>
         <p className="text-muted-foreground">
-          Successfully imported {subscriptionCount} subscriptions
+          成功导入 {subscriptionCount} 个订阅
         </p>
       </div>
     </div>

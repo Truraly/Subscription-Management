@@ -39,7 +39,7 @@ export function ExchangeRateManager() {
   };
 
   const formatLastUpdate = (dateString: string | null) => {
-    if (!dateString) return 'Never';
+    if (!dateString) return '从未';
 
     const date = new Date(dateString);
     const now = new Date();
@@ -48,11 +48,11 @@ export function ExchangeRateManager() {
     const diffDays = Math.floor(diffHours / 24);
 
     if (diffDays > 0) {
-      return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+      return `${diffDays} 天前`;
     } else if (diffHours > 0) {
-      return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+      return `${diffHours} 小时前`;
     } else {
-      return 'Just now';
+      return '刚刚';
     }
   };
 
@@ -62,20 +62,20 @@ export function ExchangeRateManager() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card className="flex flex-col">
           <CardHeader>
-            <CardTitle>Currency Settings</CardTitle>
+            <CardTitle>货币设置</CardTitle>
             <CardDescription>
-              Set your preferred currency for expense calculation
+              设置您偏好的费用计算货币
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6 flex-1">
             <div>
-              <Label htmlFor="currency">Default Currency</Label>
+              <Label htmlFor="currency">默认货币</Label>
               <Select
                 value={currency}
                 onValueChange={async (value: CurrencyType) => await setCurrency(value)}
               >
                 <SelectTrigger id="currency">
-                  <SelectValue placeholder="Select a currency" />
+                  <SelectValue placeholder="选择货币" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="CNY">CNY - Chinese Yuan</SelectItem>
@@ -88,15 +88,15 @@ export function ExchangeRateManager() {
                 </SelectContent>
               </Select>
               <p className="text-sm text-muted-foreground mt-1">
-                Your preferred currency for displaying subscription costs
+                显示订阅费用的偏好货币
               </p>
             </div>
 
             <div className="flex items-center justify-between">
               <div>
-                <Label className="text-base">Show in original currency</Label>
+                <Label className="text-base">显示原始货币</Label>
                 <p className="text-sm text-muted-foreground">
-                  Always display the original subscription currency alongside converted values
+                  始终与转换值一起显示原始订阅货币
                 </p>
               </div>
               <Switch
@@ -112,17 +112,17 @@ export function ExchangeRateManager() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5" />
-              Exchange Rate Status
+              汇率状态
             </CardTitle>
             <CardDescription>
-              Automatic exchange rate updates and current status
+              自动汇率更新和当前状态
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col flex-1">
             <div className="space-y-4 flex-1">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">API Provider</p>
+                  <p className="text-sm font-medium">API提供商</p>
                   <p className="text-sm text-muted-foreground">tianapi.com</p>
                 </div>
 
@@ -132,12 +132,12 @@ export function ExchangeRateManager() {
                     {apiKey ? (
                       <>
                         <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span className="text-sm text-green-600">Configured</span>
+                        <span className="text-sm text-green-600">已配置</span>
                       </>
                     ) : (
                       <>
                         <AlertCircle className="h-4 w-4 text-red-500" />
-                        <span className="text-sm text-red-600">Not configured</span>
+                        <span className="text-sm text-red-600">未配置</span>
                       </>
                     )}
                   </div>
@@ -146,12 +146,12 @@ export function ExchangeRateManager() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">Update Frequency</p>
-                  <p className="text-sm text-muted-foreground">Daily (Automatic)</p>
+                  <p className="text-sm font-medium">更新频率</p>
+                  <p className="text-sm text-muted-foreground">每日（自动）</p>
                 </div>
 
                 <div className="space-y-1">
-                  <p className="text-sm font-medium">Last Successful Update</p>
+                  <p className="text-sm font-medium">上次成功更新</p>
                   <p className="text-sm text-muted-foreground">
                     {formatLastUpdate(lastExchangeRateUpdate)}
                   </p>
@@ -164,7 +164,7 @@ export function ExchangeRateManager() {
                 <div className="flex items-center gap-2 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
                   <AlertCircle className="h-4 w-4 text-yellow-600" />
                   <p className="text-sm text-yellow-800">
-                    API key not configured. Automatic updates are disabled.
+                    API密钥未配置。自动更新已禁用。
                   </p>
                 </div>
               )}
@@ -181,7 +181,7 @@ export function ExchangeRateManager() {
                 ) : (
                   <RefreshCw className="h-4 w-4 mr-2" />
                 )}
-                Update Now
+                立即更新
               </Button>
 
               <Button
@@ -191,7 +191,7 @@ export function ExchangeRateManager() {
                 disabled={isUpdating}
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Refresh Rates
+                刷新汇率
               </Button>
             </div>
           </CardContent>
@@ -201,9 +201,9 @@ export function ExchangeRateManager() {
       {/* 汇率列表 */}
       <Card>
         <CardHeader>
-          <CardTitle>Current Exchange Rates</CardTitle>
+          <CardTitle>当前汇率</CardTitle>
           <CardDescription>
-            All rates are relative to {currency} (1 {currency} = X currency)
+            所有汇率相对于 {currency}（1 {currency} = X 货币）
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -231,14 +231,14 @@ export function ExchangeRateManager() {
 
           {Object.keys(exchangeRates).length === 0 && (
             <div className="text-center py-8 text-muted-foreground">
-              <p>No exchange rates available</p>
+              <p>无可用汇率</p>
               <Button
                 onClick={fetchExchangeRates}
                 variant="outline"
                 size="sm"
                 className="mt-2"
               >
-                Load Rates
+                加载汇率
               </Button>
             </div>
           )}
