@@ -14,9 +14,9 @@ export function FileUploadStep({ file, onFileChange }: FileUploadStepProps) {
       >
         <Upload className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
         <div className="space-y-2">
-          <p className="font-medium">Click to upload or drag and drop</p>
+          <p className="font-medium">点击上传或拖拽文件</p>
           <p className="text-sm text-muted-foreground">
-            CSV or JSON files up to 2MB
+            CSV或JSON文件，最大2MB
           </p>
         </div>
         <input
@@ -29,11 +29,11 @@ export function FileUploadStep({ file, onFileChange }: FileUploadStepProps) {
       </div>
       
       <div className="bg-muted/50 rounded-md p-4 text-sm">
-        <h4 className="font-medium mb-2">File requirements:</h4>
+        <h4 className="font-medium mb-2">文件要求：</h4>
         <ul className="list-disc pl-5 space-y-1">
-          <li>CSV files should have headers matching subscription fields</li>
-          <li>Required fields: name, amount, currency, billingCycle, nextBillingDate, status</li>
-          <li>JSON files should match the subscription data structure</li>
+          <li>CSV文件应有与订阅字段匹配的标题</li>
+          <li>必需字段：name, amount, currency, billingCycle, nextBillingDate, status</li>
+          <li>JSON文件应匹配订阅数据结构</li>
         </ul>
       </div>
     </div>

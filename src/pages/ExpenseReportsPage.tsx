@@ -316,9 +316,9 @@ export function ExpenseReportsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Expense Reports</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">费用报告</h1>
           <p className="text-muted-foreground">
-            Comprehensive analysis of your subscription expenses
+            订阅费用的全面分析
           </p>
         </div>
       </div>
@@ -328,7 +328,7 @@ export function ExpenseReportsPage() {
         <div>
           {isLoadingExpenseInfo ? (
             <div>
-              <p className="text-sm text-muted-foreground mb-4">Loading expense overview...</p>
+              <p className="text-sm text-muted-foreground mb-4">正在加载费用概览...</p>
               <ExpenseInfoCards
                 monthlyData={[]}
                 quarterlyData={[]}
@@ -341,7 +341,7 @@ export function ExpenseReportsPage() {
             <Card>
               <CardContent className="flex items-center justify-center h-32">
                 <div className="text-center">
-                  <p className="text-sm text-destructive mb-2">Failed to load expense overview</p>
+                  <p className="text-sm text-destructive mb-2">加载费用概览失败</p>
                   <p className="text-xs text-muted-foreground">{expenseInfoError}</p>
                 </div>
               </CardContent>
@@ -367,7 +367,7 @@ export function ExpenseReportsPage() {
           <CardContent className="flex items-center justify-center h-32">
             <div className="text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-              <p className="text-sm text-muted-foreground">Loading expense data...</p>
+              <p className="text-sm text-muted-foreground">正在加载费用数据...</p>
             </div>
           </CardContent>
         </Card>
@@ -377,7 +377,7 @@ export function ExpenseReportsPage() {
         <Card>
           <CardContent className="flex items-center justify-center h-32">
             <div className="text-center">
-              <p className="text-sm text-destructive mb-2">Failed to load expense data</p>
+              <p className="text-sm text-destructive mb-2">加载费用数据失败</p>
               <p className="text-xs text-muted-foreground">{expenseError}</p>
             </div>
           </CardContent>
@@ -389,8 +389,8 @@ export function ExpenseReportsPage() {
         <div className="space-y-4">
           <Tabs defaultValue="monthly" className="space-y-4">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="monthly">Monthly</TabsTrigger>
-              <TabsTrigger value="yearly">Yearly</TabsTrigger>
+              <TabsTrigger value="monthly">月度</TabsTrigger>
+              <TabsTrigger value="yearly">年度</TabsTrigger>
             </TabsList>
 
             <TabsContent value="monthly" className="space-y-4">
@@ -405,7 +405,7 @@ export function ExpenseReportsPage() {
                     <CardContent className="flex items-center justify-center h-[400px]">
                       <div className="text-center">
                         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-                        <p className="text-sm text-muted-foreground">Loading category data...</p>
+                        <p className="text-sm text-muted-foreground">正在加载分类数据...</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -413,7 +413,7 @@ export function ExpenseReportsPage() {
                   <Card>
                     <CardContent className="flex items-center justify-center h-[400px]">
                       <div className="text-center text-destructive">
-                        <p className="font-medium">Failed to load category data</p>
+                        <p className="font-medium">加载分类数据失败</p>
                         <p className="text-sm text-muted-foreground mt-1">{categoryExpenseError}</p>
                       </div>
                     </CardContent>
@@ -432,13 +432,13 @@ export function ExpenseReportsPage() {
                 <div className="flex items-center justify-center h-32">
                   <div className="text-center">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-                    <p className="text-sm text-muted-foreground">Loading yearly data...</p>
+                    <p className="text-sm text-muted-foreground">正在加载年度数据...</p>
                   </div>
                 </div>
               ) : yearlyExpenseError ? (
                 <div className="flex items-center justify-center h-32">
                   <div className="text-center">
-                    <p className="text-sm text-destructive mb-2">Failed to load yearly data</p>
+                    <p className="text-sm text-destructive mb-2">加载年度数据失败</p>
                     <p className="text-xs text-muted-foreground">{yearlyExpenseError}</p>
                   </div>
                 </div>
@@ -454,7 +454,7 @@ export function ExpenseReportsPage() {
                       <CardContent className="flex items-center justify-center h-[400px]">
                         <div className="text-center">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-                          <p className="text-sm text-muted-foreground">Loading yearly category data...</p>
+                          <p className="text-sm text-muted-foreground">正在加载年度分类数据...</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -462,7 +462,7 @@ export function ExpenseReportsPage() {
                     <Card>
                       <CardContent className="flex items-center justify-center h-[400px]">
                         <div className="text-center text-destructive">
-                          <p className="font-medium">Failed to load yearly category data</p>
+                          <p className="font-medium">加载年度分类数据失败</p>
                           <p className="text-sm text-muted-foreground mt-1">{yearlyCategoryExpenseError}</p>
                         </div>
                       </CardContent>
