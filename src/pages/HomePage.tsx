@@ -89,8 +89,8 @@ function HomePage() {
 
     if (error) {
       toast({
-        title: "Error updating subscription",
-        description: error.message || "Failed to update subscription",
+        title: "更新订阅出错",
+        description: error.message || "更新订阅失败",
         variant: "destructive"
       })
       return
@@ -98,8 +98,8 @@ function HomePage() {
 
     setEditingSubscription(null)
     toast({
-      title: "Subscription updated",
-      description: `${data.name} has been updated successfully.`
+      title: "订阅已更新",
+      description: `${data.name} 已成功更新。`
     })
   }
 
@@ -120,14 +120,14 @@ function HomePage() {
       }
 
       toast({
-        title: "Data refreshed",
-        description: "Subscription data and renewals have been processed."
+        title: "数据已刷新",
+        description: "订阅数据和续费已处理完毕。"
       })
     } catch (error) {
       console.error('Error refreshing data:', error)
       toast({
-        title: "Refresh failed",
-        description: "Failed to refresh data. Please try again.",
+        title: "刷新失败",
+        description: "数据刷新失败，请重试。",
         variant: "destructive"
       })
     } finally {
@@ -143,14 +143,14 @@ function HomePage() {
 
     if (error) {
       toast({
-        title: "Import failed",
-        description: error.message || "Failed to import subscriptions",
+        title: "导入失败",
+        description: error.message || "导入订阅失败",
         variant: "destructive",
       });
     } else {
       toast({
-        title: "Import successful",
-        description: `${newSubscriptions.length} subscriptions have been imported.`,
+        title: "导入成功",
+        description: `${newSubscriptions.length} 个订阅已成功导入。`,
       });
     }
 
@@ -170,7 +170,7 @@ function HomePage() {
       <div className="flex items-center justify-center h-[calc(100vh-16rem)]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-lg font-medium">Loading subscriptions...</p>
+          <p className="text-lg font-medium">正在加载订阅...</p>
         </div>
       </div>
     )
@@ -180,9 +180,9 @@ function HomePage() {
     <>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">仪表板</h1>
           <p className="text-muted-foreground">
-            Overview of your subscription expenses and activity
+            您的订阅费用和活动概览
           </p>
         </div>
         <Button
@@ -193,7 +193,7 @@ function HomePage() {
           className="flex items-center gap-2"
         >
           <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-          {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
+          {isRefreshing ? '刷新中...' : '刷新数据'}
         </Button>
       </div>
 
@@ -201,23 +201,23 @@ function HomePage() {
       <div className="space-y-6">
           <div className="grid gap-4 md:grid-cols-3">
             <StatCard
-              title="Monthly Spending"
+              title="月度支出"
               value={formatCurrencyAmount(monthlySpending, userCurrency)}
-              description="Current month expenses"
+              description="当月费用"
               icon={Calendar}
               iconColor="text-blue-500"
             />
             <StatCard
-              title="Yearly Spending"
+              title="年度支出"
               value={formatCurrencyAmount(yearlySpending, userCurrency)}
-              description="Current year total expenses"
+              description="当年总费用"
               icon={Calendar}
               iconColor="text-purple-500"
             />
             <StatCard
-              title="Active Subscriptions"
+              title="活跃订阅"
               value={subscriptions.filter(sub => sub.status === "active").length}
-              description="Total services"
+              description="服务总数"
               icon={Clock}
               iconColor="text-green-500"
             />

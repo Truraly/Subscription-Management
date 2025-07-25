@@ -129,7 +129,7 @@ export function SettingsPage() {
       <div className="flex items-center justify-center h-[calc(100vh-16rem)]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-lg font-medium">Loading settings...</p>
+          <p className="text-lg font-medium">正在加载设置...</p>
         </div>
       </div>
     )
@@ -138,7 +138,7 @@ export function SettingsPage() {
   return (
     <>
       <div className="flex items-center justify-between pb-4">
-        <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
+        <h2 className="text-3xl font-bold tracking-tight">设置</h2>
       </div>
 
       <Tabs defaultValue={defaultTab}>
@@ -155,8 +155,8 @@ export function SettingsPage() {
         <TabsContent value="general" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>General Settings</CardTitle>
-              <CardDescription>Customize your general preferences</CardDescription>
+              <CardTitle>常规设置</CardTitle>
+              <CardDescription>自定义您的常规偏好设置</CardDescription>
             </CardHeader>
             <CardContent>
               <div>

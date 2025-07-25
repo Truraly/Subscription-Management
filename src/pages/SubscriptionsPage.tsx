@@ -142,16 +142,16 @@ export function SubscriptionsPage() {
     
     if (error) {
       toast({
-        title: "Error adding subscription",
-        description: error.message || "Failed to add subscription",
+        title: "添加订阅出错",
+        description: error.message || "添加订阅失败",
         variant: "destructive"
       })
       return
     }
     
     toast({
-      title: "Subscription added",
-      description: `${subscription.name} has been added successfully.`
+      title: "订阅已添加",
+      description: `${subscription.name} 已成功添加。`
     })
   }
 
@@ -161,8 +161,8 @@ export function SubscriptionsPage() {
     
     if (error) {
       toast({
-        title: "Error updating subscription",
-        description: error.message || "Failed to update subscription",
+        title: "更新订阅出错",
+        description: error.message || "更新订阅失败",
         variant: "destructive"
       })
       return
@@ -170,8 +170,8 @@ export function SubscriptionsPage() {
     
     setEditingSubscription(null)
     toast({
-      title: "Subscription updated",
-      description: `${data.name} has been updated successfully.`
+      title: "订阅已更新",
+      description: `${data.name} 已成功更新。`
     })
   }
 
@@ -186,16 +186,16 @@ export function SubscriptionsPage() {
     
     if (error) {
       toast({
-        title: "Error deleting subscription",
-        description: error.message || "Failed to delete subscription",
+        title: "删除订阅出错",
+        description: error.message || "删除订阅失败",
         variant: "destructive"
       })
       return
     }
     
     toast({
-      title: "Subscription deleted",
-      description: `${deleteTarget.name} has been deleted.`,
+      title: "订阅已删除",
+      description: `${deleteTarget.name} 已删除。`,
       variant: "destructive"
     })
     
@@ -204,9 +204,9 @@ export function SubscriptionsPage() {
   
   // Confirmation dialog hook
   const deleteConfirmation = useConfirmation({
-    title: "Delete Subscription",
-    description: deleteTarget ? `Are you sure you want to delete "${deleteTarget.name}"? This action cannot be undone.` : "",
-    confirmText: "Delete",
+    title: "删除订阅",
+    description: deleteTarget ? `确定要删除"${deleteTarget.name}"吗？此操作无法撤销。` : "",
+    confirmText: "删除",
     onConfirm: handleDeleteSubscription,
   })
   
@@ -228,16 +228,16 @@ export function SubscriptionsPage() {
 
     if (error) {
       toast({
-        title: "Error updating status",
-        description: error.message || "Failed to update status",
+        title: "更新状态出错",
+        description: error.message || "更新状态失败",
         variant: "destructive"
       })
       return
     }
 
     toast({
-      title: status === "active" ? "Subscription activated" : "Subscription cancelled",
-      description: `${subscription.name} has been ${status === "active" ? "activated" : "cancelled"}.`
+      title: status === "active" ? "订阅已激活" : "订阅已取消",
+      description: `${subscription.name} 已${status === "active" ? "激活" : "取消"}。`
     })
   }
 
@@ -250,7 +250,7 @@ export function SubscriptionsPage() {
 
     if (error) {
       toast({
-        title: "Error renewing subscription",
+        title: "续费出错",
         description: error,
         variant: "destructive"
       })
@@ -258,8 +258,8 @@ export function SubscriptionsPage() {
     }
 
     toast({
-      title: "Subscription renewed successfully",
-      description: `${subscription.name} has been renewed. Next billing date: ${renewalData?.newNextBilling}`
+      title: "订阅续费成功",
+      description: `${subscription.name} 已续费。下次计费日期：${renewalData?.newNextBilling}`
     })
   }
 
@@ -291,14 +291,14 @@ export function SubscriptionsPage() {
 
     if (error) {
       toast({
-        title: "Import failed",
-        description: error.message || "Failed to import subscriptions",
+        title: "导入失败",
+        description: error.message || "导入订阅失败",
         variant: "destructive",
       });
     } else {
       toast({
-        title: "Import successful",
-        description: `${newSubscriptions.length} subscriptions have been imported.`,
+        title: "导入成功",
+        description: `${newSubscriptions.length} 个订阅已成功导入。`,
       });
     }
 
@@ -322,8 +322,8 @@ export function SubscriptionsPage() {
     document.body.removeChild(a)
     
     toast({
-      title: "Export successful",
-      description: "Your subscriptions have been exported to CSV."
+      title: "导出成功",
+      description: "您的订阅已导出为CSV文件。"
     })
   }
   

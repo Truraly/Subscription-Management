@@ -26,24 +26,24 @@ export function UpcomingRenewals({ subscriptions, className }: UpcomingRenewalsP
   }
   
   const getTimeLabel = (daysLeft: number) => {
-    if (daysLeft === 0) return "Today"
-    if (daysLeft === 1) return "Tomorrow"
-    return `${daysLeft} days`
+    if (daysLeft === 0) return "今天"
+    if (daysLeft === 1) return "明天"
+    return `${daysLeft} 天`
   }
 
   return (
     <Card className={cn("min-h-[200px] flex flex-col", className)}>
       <CardHeader className="flex-shrink-0">
-        <CardTitle className="text-lg">Upcoming Renewals</CardTitle>
+        <CardTitle className="text-lg">即将续费</CardTitle>
         <CardDescription>
-          Subscriptions renewing in the next 7 days
+          未来7天内即将续费的订阅
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
         {subscriptions.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center">
             <Calendar className="h-10 w-10 text-muted-foreground opacity-50 mb-2" />
-            <p className="text-muted-foreground">No upcoming renewals for the next 7 days</p>
+            <p className="text-muted-foreground">未来7天内没有即将续费的订阅</p>
           </div>
         ) : (
           <div className="space-y-4 flex-1">
