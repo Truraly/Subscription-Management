@@ -144,11 +144,11 @@ export function SettingsPage() {
       <Tabs defaultValue={defaultTab}>
         <div className="overflow-x-auto mb-4 sm:overflow-visible">
           <TabsList className="mb-4 min-w-max sm:min-w-0">
-            <TabsTrigger value="general" className="text-xs sm:text-sm px-2 sm:px-3">General</TabsTrigger>
-            <TabsTrigger value="currency" className="text-xs sm:text-sm px-2 sm:px-3">Currency</TabsTrigger>
-            <TabsTrigger value="options" className="text-xs sm:text-sm px-2 sm:px-3">Options</TabsTrigger>
+            <TabsTrigger value="general" className="text-xs sm:text-sm px-2 sm:px-3">通用</TabsTrigger>
+            <TabsTrigger value="currency" className="text-xs sm:text-sm px-2 sm:px-3">货币</TabsTrigger>
+            <TabsTrigger value="options" className="text-xs sm:text-sm px-2 sm:px-3">选项</TabsTrigger>
 
-            <TabsTrigger value="data" className="text-xs sm:text-sm px-2 sm:px-3">Data</TabsTrigger>
+            <TabsTrigger value="data" className="text-xs sm:text-sm px-2 sm:px-3">数据</TabsTrigger>
           </TabsList>
         </div>
 
@@ -160,7 +160,7 @@ export function SettingsPage() {
             </CardHeader>
             <CardContent>
               <div>
-                <Label htmlFor="theme">Theme Mode</Label>
+                <Label htmlFor="theme">主题模式</Label>
                 <Select
                   value={theme}
                   onValueChange={async (value: ThemeType) => {
@@ -170,16 +170,16 @@ export function SettingsPage() {
                   }}
                 >
                   <SelectTrigger id="theme">
-                    <SelectValue placeholder="Select a theme" />
+                    <SelectValue placeholder="选择一个主题" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                    <SelectItem value="light">浅色</SelectItem>
+                    <SelectItem value="dark">深色</SelectItem>
+                    <SelectItem value="system">跟随系统</SelectItem>
                   </SelectContent>
                 </Select>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Choose between light, dark, or system preference
+                  在浅色、深色或系统偏好之间进行选择
                 </p>
               </div>
             </CardContent>
@@ -197,19 +197,19 @@ export function SettingsPage() {
         <TabsContent value="data" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>API & Synchronization</CardTitle>
+              <CardTitle>API 与同步</CardTitle>
               <CardDescription>
-                Manage your API key for backend synchronization. This key is stored locally.
+                管理用于后端同步的 API 密钥。该密钥存储在本地。
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <Label htmlFor="api-key">API Key</Label>
+                <Label htmlFor="api-key">API 密钥</Label>
                 <div className="flex items-center gap-2">
                   <Input
                     id="api-key"
                     type={isKeyVisible ? "text" : "password"}
-                    placeholder="Enter your API key"
+                    placeholder="输入您的 API 密钥"
                     value={tempApiKey}
                     onChange={(e) => setTempApiKey(e.target.value)}
                   />
@@ -222,45 +222,44 @@ export function SettingsPage() {
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  The API key is required for creating, updating, or deleting subscriptions.
+                  创建、更新或删除订阅需要 API 密钥。
                 </p>
               </div>
             </CardContent>
             <CardFooter>
-              <Button onClick={handleSaveApiKey}>Save API Key</Button>
+              <Button onClick={handleSaveApiKey}>保存 API 密钥</Button>
             </CardFooter>
           </Card>
 
           <Card className="mt-4">
             <CardHeader>
-              <CardTitle>Data Management</CardTitle>
+              <CardTitle>数据管理</CardTitle>
               <CardDescription>
-                Export your subscriptions or import from another service
+                导出您的订阅或从其他服务导入
               </CardDescription>
             </CardHeader>
             <CardContent className="flex gap-4">
               <Button variant="outline" onClick={handleExportData}>
                 <Download className="mr-2 h-4 w-4" />
-                Export Data
+                导出数据
               </Button>
               <Button variant="outline" onClick={() => setIsImportModalOpen(true)}>
                 <Upload className="mr-2 h-4 w-4" />
-                Import Data
+                导入数据
               </Button>
             </CardContent>
           </Card>
 
           <Card className="mt-4 border-destructive">
             <CardHeader>
-              <CardTitle>Reset Data</CardTitle>
+              <CardTitle>重置数据</CardTitle>
               <CardDescription>
-                This will permanently delete all your subscriptions and settings. 
-                This action cannot be undone.
+                这将永久删除您的所有订阅和设置。此操作无法撤消。
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button variant="destructive" onClick={resetConfirmation.openDialog}>
-                Reset All Data
+                重置所有数据
               </Button>
             </CardContent>
           </Card>

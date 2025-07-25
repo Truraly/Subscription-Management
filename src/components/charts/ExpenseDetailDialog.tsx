@@ -112,7 +112,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
       setTotalRecords(allPaymentDetails.length)
       setTotalPages(Math.ceil(allPaymentDetails.length / pageSize))
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load payment data')
+      setError(err instanceof Error ? err.message : '加载付款数据失败')
     } finally {
       setIsLoading(false)
     }
@@ -155,10 +155,10 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Calendar className="h-5 w-5" />
-            {periodData.period} - Payment Details
+            {periodData.period} - 付款详情
           </DialogTitle>
           <DialogDescription>
-            View all payment records for this period
+            查看此期间的所有付款记录
           </DialogDescription>
         </DialogHeader>
 
@@ -169,7 +169,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
               <div className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Total</p>
+                  <p className="text-sm text-muted-foreground">总计</p>
                   <p className="font-semibold">{formatCurrencyAmount(periodData.totalSpent, periodData.currency)}</p>
                 </div>
               </div>
@@ -181,7 +181,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Payments</p>
+                  <p className="text-sm text-muted-foreground">付款</p>
                   <p className="font-semibold">
                     {payments.length}
                   </p>
@@ -195,7 +195,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
               <div className="flex items-center gap-2">
                 <CreditCard className="h-4 w-4 text-muted-foreground" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Daily Avg</p>
+                  <p className="text-sm text-muted-foreground">每日平均</p>
                   <p className="font-semibold">{formatCurrencyAmount(periodData.dailyAverage, periodData.currency)}</p>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search subscriptions..."
+              placeholder="搜索订阅..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -224,18 +224,18 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
             {isLoading ? (
               <div className="flex items-center justify-center h-32">
                 <Loader2 className="h-6 w-6 animate-spin" />
-                <span className="ml-2">Loading payments...</span>
+                <span className="ml-2">正在加载付款...</span>
               </div>
             ) : error ? (
               <div className="text-center text-destructive p-4">
-                <p>Error loading payments: {error}</p>
+                <p>加载付款时出错: {error}</p>
                 <Button variant="outline" onClick={fetchPaymentData} className="mt-2">
-                  Retry
+                  重试
                 </Button>
               </div>
             ) : filteredPayments.length === 0 ? (
               <div className="text-center text-muted-foreground p-4">
-                No payments found for this period
+                未找到此期间的付款
               </div>
             ) : (
               paginatedPayments.map((payment, index) => (
@@ -248,12 +248,12 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-medium">{payment.subscriptionName || 'Unknown Subscription'}</h4>
+                          <h4 className="font-medium">{payment.subscriptionName || '未知订阅'}</h4>
                           <Badge variant="secondary" className="text-xs">
-                            {payment.subscriptionPlan || 'Unknown Plan'}
+                            {payment.subscriptionPlan || '未知计划'}
                           </Badge>
                           <Badge className={`text-xs ${getStatusColor(payment.status || 'unknown')}`}>
-                            {payment.status || 'Unknown'}
+                            {payment.status || '未知'}
                           </Badge>
                           {payment.billingCycle && payment.billingCycle !== 'monthly' && (
                             <Badge variant="outline" className="text-xs">
@@ -262,14 +262,14 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
                           )}
                           {(payment.billingCycle === 'yearly' || payment.billingCycle === 'quarterly') && (
                             <Badge variant="outline" className="text-xs text-orange-600 border-orange-300">
-                              Allocated
+                              已分配
                             </Badge>
                           )}
                         </div>
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                          <span>Paid: {formatDateDisplay(payment.paymentDate)}</span>
+                          <span>已付: {formatDateDisplay(payment.paymentDate)}</span>
                           <span>
-                            Billing: {formatDateDisplay(payment.billingPeriod?.start)} - {formatDateDisplay(payment.billingPeriod?.end)}
+                            账单: {formatDateDisplay(payment.billingPeriod?.start)} - {formatDateDisplay(payment.billingPeriod?.end)}
                           </span>
                         </div>
                       </div>
@@ -291,7 +291,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
         {filteredTotalPages > 1 && (
           <div className="flex items-center justify-between mt-4">
             <p className="text-sm text-muted-foreground">
-              Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, filteredPayments.length)} of {filteredPayments.length} payments
+              显示 {filteredPayments.length} 个付款中的 {((currentPage - 1) * pageSize) + 1} 到 {Math.min(currentPage * pageSize, filteredPayments.length)}
             </p>
             <div className="flex items-center gap-2">
               <Button
@@ -301,10 +301,10 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
                 disabled={currentPage === 1}
               >
                 <ChevronLeft className="h-4 w-4" />
-                Previous
+                上一个
               </Button>
               <span className="text-sm">
-                Page {currentPage} of {filteredTotalPages}
+                第 {currentPage} 页，共 {filteredTotalPages} 页
               </span>
               <Button
                 variant="outline"
@@ -312,7 +312,7 @@ export function ExpenseDetailDialog({ isOpen, onClose, periodData }: ExpenseDeta
                 onClick={() => setCurrentPage(prev => Math.min(filteredTotalPages, prev + 1))}
                 disabled={currentPage === filteredTotalPages}
               >
-                Next
+                下一个
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>

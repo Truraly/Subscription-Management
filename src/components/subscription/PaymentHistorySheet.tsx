@@ -122,36 +122,36 @@ export function PaymentHistorySheet({
     const newErrors: FormErrors = {}
 
     if (!form.paymentDate) {
-      newErrors.paymentDate = "Payment date is required"
+      newErrors.paymentDate = "付款日期是必填项"
     }
 
     const amountValue = typeof form.amountPaid === 'string' ? parseFloat(form.amountPaid) : form.amountPaid;
     if (!amountValue || isNaN(amountValue) || amountValue <= 0) {
-      newErrors.amountPaid = "Amount must be greater than 0"
+      newErrors.amountPaid = "金额必须大于 0"
     }
 
     if (!form.currency) {
-      newErrors.currency = "Currency is required"
+      newErrors.currency = "货币是必填项"
     }
 
     if (!form.billingPeriodStart) {
-      newErrors.billingPeriodStart = "Billing period start is required"
+      newErrors.billingPeriodStart = "账单周期开始是必填项"
     }
 
     if (!form.billingPeriodEnd) {
-      newErrors.billingPeriodEnd = "Billing period end is required"
+      newErrors.billingPeriodEnd = "账单周期结束是必填项"
     }
 
     if (form.billingPeriodStart && form.billingPeriodEnd) {
       const startDate = new Date(form.billingPeriodStart)
       const endDate = new Date(form.billingPeriodEnd)
       if (startDate >= endDate) {
-        newErrors.billingPeriodEnd = "End date must be after start date"
+        newErrors.billingPeriodEnd = "结束日期必须在开始日期之后"
       }
     }
 
     if (!form.status) {
-      newErrors.status = "Status is required"
+      newErrors.status = "状态是必填项"
     }
 
     setErrors(newErrors)
@@ -198,7 +198,7 @@ export function PaymentHistorySheet({
       <SheetContent className="w-full sm:w-[400px] md:w-[500px] lg:w-[540px] overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
-            {initialData ? "Edit Payment" : "Add Payment"}
+            {initialData ? "编辑付款" : "添加付款"}
           </SheetTitle>
           <SheetDescription>
             {subscriptionName}
@@ -208,11 +208,11 @@ export function PaymentHistorySheet({
         <div className="space-y-4 py-4">
           {/* Payment Date */}
           <div className="space-y-2">
-            <Label htmlFor="paymentDate">Payment Date *</Label>
+            <Label htmlFor="paymentDate">付款日期 *</Label>
             <DatePicker
               value={form.paymentDate}
               onChange={(date) => handleFieldChange("paymentDate", date || new Date())}
-              placeholder="Select payment date"
+              placeholder="选择付款日期"
               className={errors.paymentDate ? "border-destructive" : ""}
             />
             {errors.paymentDate && (
@@ -223,7 +223,7 @@ export function PaymentHistorySheet({
           {/* Amount and Currency */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="amountPaid">Amount *</Label>
+              <Label htmlFor="amountPaid">金额 *</Label>
               <Input
                 id="amountPaid"
                 type="number"
@@ -238,7 +238,7 @@ export function PaymentHistorySheet({
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="currency">Currency *</Label>
+              <Label htmlFor="currency">货币 *</Label>
               <CurrencySelector
                 value={form.currency}
                 onValueChange={(value) => handleFieldChange("currency", value)}
@@ -253,11 +253,11 @@ export function PaymentHistorySheet({
           {/* Billing Period */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="billingPeriodStart">Billing Period Start *</Label>
+              <Label htmlFor="billingPeriodStart">账单周期开始 *</Label>
               <DatePicker
                 value={form.billingPeriodStart}
                 onChange={(date) => handleFieldChange("billingPeriodStart", date || new Date())}
-                placeholder="Select start date"
+                placeholder="选择开始日期"
                 className={errors.billingPeriodStart ? "border-destructive" : ""}
               />
               {errors.billingPeriodStart && (
@@ -265,11 +265,11 @@ export function PaymentHistorySheet({
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="billingPeriodEnd">Billing Period End *</Label>
+              <Label htmlFor="billingPeriodEnd">账单周期结束 *</Label>
               <DatePicker
                 value={form.billingPeriodEnd}
                 onChange={(date) => handleFieldChange("billingPeriodEnd", date || new Date())}
-                placeholder="Select end date"
+                placeholder="选择结束日期"
                 className={errors.billingPeriodEnd ? "border-destructive" : ""}
               />
               {errors.billingPeriodEnd && (
@@ -280,19 +280,19 @@ export function PaymentHistorySheet({
 
           {/* Status */}
           <div className="space-y-2">
-            <Label htmlFor="status">Status *</Label>
+            <Label htmlFor="status">状态 *</Label>
             <Select
               value={form.status}
               onValueChange={(value) => handleFieldChange("status", value)}
             >
               <SelectTrigger className={errors.status ? "border-destructive" : ""}>
-                <SelectValue placeholder="Select status" />
+                <SelectValue placeholder="选择状态" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="succeeded">Succeeded</SelectItem>
-                <SelectItem value="failed">Failed</SelectItem>
-                <SelectItem value="refunded">Refunded</SelectItem>
-                <SelectItem value="pending">Pending</SelectItem>
+                <SelectItem value="succeeded">成功</SelectItem>
+                <SelectItem value="failed">失败</SelectItem>
+                <SelectItem value="refunded">已退款</SelectItem>
+                <SelectItem value="pending">待定</SelectItem>
               </SelectContent>
             </Select>
             {errors.status && (
@@ -302,12 +302,12 @@ export function PaymentHistorySheet({
 
           {/* Notes */}
           <div className="space-y-2">
-            <Label htmlFor="notes">Notes</Label>
+            <Label htmlFor="notes">备注</Label>
             <Textarea
               id="notes"
               value={form.notes}
               onChange={(e) => handleFieldChange("notes", e.target.value)}
-              placeholder="Optional notes about this payment..."
+              placeholder="关于此付款的可选备注..."
               rows={3}
             />
           </div>
@@ -315,7 +315,7 @@ export function PaymentHistorySheet({
 
         <SheetFooter className="flex-col sm:flex-row gap-2">
           <Button variant="outline" onClick={() => onOpenChange(false)} className="w-full sm:w-auto">
-            Cancel
+            取消
           </Button>
           <Button
             type="submit"
@@ -324,7 +324,7 @@ export function PaymentHistorySheet({
             className="w-full sm:w-auto"
           >
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {initialData ? "Update Payment" : "Add Payment"}
+            {initialData ? "更新付款" : "添加付款"}
           </Button>
         </SheetFooter>
       </SheetContent>

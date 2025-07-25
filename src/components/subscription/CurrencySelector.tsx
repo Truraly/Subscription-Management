@@ -63,7 +63,7 @@ export function CurrencySelector({
             {selectedCurrency ? (
               <span className="truncate">{selectedCurrency.value}</span>
             ) : (
-              <span className="text-muted-foreground">Select currency</span>
+              <span className="text-muted-foreground">选择货币</span>
             )}
           </span>
           <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
@@ -71,8 +71,8 @@ export function CurrencySelector({
       </PopoverTrigger>
       <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
         <Command>
-          <CommandInput placeholder="Search currency..." />
-          <CommandEmpty>No currency found.</CommandEmpty>
+          <CommandInput placeholder="搜索货币..." />
+          <CommandEmpty>未找到货币。</CommandEmpty>
           <CommandList className="max-h-60">
             <CommandGroup>
               {currencies.map((currency) => (

@@ -80,7 +80,7 @@ export function ImportModal({
     }
     
     reader.onerror = () => {
-      setErrors(['Error reading file.'])
+      setErrors(['读取文件时出错。'])
       setIsProcessing(false)
       setStep(ImportStep.Review)
     }
@@ -88,7 +88,7 @@ export function ImportModal({
     if (file.name.endsWith('.csv') || file.name.endsWith('.json')) {
       reader.readAsText(file)
     } else {
-      setErrors(['Unsupported file format. Please upload a CSV or JSON file.'])
+      setErrors(['不支持的文件格式。请上传 CSV 或 JSON 文件。'])
       setIsProcessing(false)
       setStep(ImportStep.Review)
     }
@@ -125,13 +125,13 @@ export function ImportModal({
         return (
           <>
             <Button variant="outline" onClick={() => handleOpenChange(false)}>
-              Cancel
+              取消
             </Button>
             <Button 
               disabled={!file}
               onClick={() => file && setStep(ImportStep.Validate)}
             >
-              Continue
+              继续
             </Button>
           </>
         )
@@ -140,13 +140,13 @@ export function ImportModal({
         return (
           <>
             <Button variant="outline" onClick={() => handleOpenChange(false)}>
-              Cancel
+              取消
             </Button>
             <Button 
               disabled={isProcessing}
               onClick={validateFile}
             >
-              {isProcessing ? "Validating..." : "Validate File"}
+              {isProcessing ? "验证中..." : "验证文件"}
             </Button>
           </>
         )
@@ -155,13 +155,13 @@ export function ImportModal({
         return (
           <>
             <Button variant="outline" onClick={() => handleOpenChange(false)}>
-              Cancel
+              取消
             </Button>
             <Button 
               disabled={subscriptions.length === 0 || errors.length > 0}
               onClick={completeImport}
             >
-              Import {subscriptions.length} Subscriptions
+              导入 {subscriptions.length} 个订阅
             </Button>
           </>
         )
@@ -169,7 +169,7 @@ export function ImportModal({
       case ImportStep.Complete:
         return (
           <Button onClick={() => handleOpenChange(false)}>
-            Close
+            关闭
           </Button>
         )
     }
@@ -179,9 +179,9 @@ export function ImportModal({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Import Subscriptions</DialogTitle>
+          <DialogTitle>导入订阅</DialogTitle>
           <DialogDescription>
-            Upload a CSV or JSON file to import multiple subscriptions at once.
+            上传 CSV 或 JSON 文件以一次性导入多个订阅。
           </DialogDescription>
         </DialogHeader>
         
@@ -195,16 +195,16 @@ export function ImportModal({
           </div>
           <div className="flex justify-between mt-2 text-xs text-muted-foreground">
             <div className={step >= ImportStep.Upload ? "text-primary font-medium" : ""}>
-              Select file
+              选择文件
             </div>
             <div className={step >= ImportStep.Validate ? "text-primary font-medium" : ""}>
-              Validate
+              验证
             </div>
             <div className={step >= ImportStep.Review ? "text-primary font-medium" : ""}>
-              Review
+              审查
             </div>
             <div className={step >= ImportStep.Complete ? "text-primary font-medium" : ""}>
-              Complete
+              完成
             </div>
           </div>
         </div>

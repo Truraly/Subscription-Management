@@ -22,7 +22,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         <div className="container flex h-16 items-center justify-between py-4 px-4 sm:px-6">
           <div className="flex items-center gap-6 md:gap-10">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="font-bold text-lg sm:text-xl">SubManager</span>
+              <span className="font-bold text-lg sm:text-xl">订阅管家</span>
             </Link>
           </div>
 
@@ -30,21 +30,21 @@ export function MainLayout({ children }: MainLayoutProps) {
             <Link to="/">
               <Button variant={location.pathname === '/' ? "default" : "ghost"} size="sm" className="px-2 sm:px-3">
                 <Home className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Dashboard</span>
+                <span className="hidden sm:inline">仪表板</span>
               </Button>
             </Link>
 
             <Link to="/subscriptions">
               <Button variant={location.pathname === '/subscriptions' ? "default" : "ghost"} size="sm" className="px-2 sm:px-3">
                 <CreditCard className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Subscriptions</span>
+                <span className="hidden sm:inline">订阅</span>
               </Button>
             </Link>
 
             <Link to="/expense-reports">
               <Button variant={location.pathname === '/expense-reports' ? "default" : "ghost"} size="sm" className="px-2 sm:px-3">
                 <BarChart3 className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Reports</span>
+                <span className="hidden sm:inline">报告</span>
               </Button>
             </Link>
 
@@ -53,7 +53,7 @@ export function MainLayout({ children }: MainLayoutProps) {
             <Link to="/settings">
               <Button variant={location.pathname === '/settings' ? "default" : "ghost"} size="sm" className="px-2 sm:px-3">
                 <Settings className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Settings</span>
+                <span className="hidden sm:inline">设置</span>
               </Button>
             </Link>
 
@@ -67,7 +67,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <footer className="border-t py-4 sm:py-6">
         <div className="container flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6 px-4 sm:px-6">
           <p className="text-center text-sm leading-loose text-muted-foreground">
-            &copy; {new Date().getFullYear()} SubManager. All rights reserved.
+            &copy; {new Date().getFullYear()} 订阅管家. 版权所有.
           </p>
         </div>
       </footer>

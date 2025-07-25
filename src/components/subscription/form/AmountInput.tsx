@@ -17,7 +17,7 @@ export function AmountInput({ amount, currency, onAmountChange, onCurrencyChange
   }
 
   return (
-    <FormField label="Amount" error={error} required>
+    <FormField label="金额" error={error} required>
       <div className="grid grid-cols-5 gap-2">
         <div className="col-span-3">
           <Input

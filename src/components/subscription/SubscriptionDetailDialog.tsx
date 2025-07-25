@@ -134,7 +134,7 @@ const ContentComponent = ({
               : ""
           }`}
         >
-          Details
+          详情
         </button>
         <button
           onClick={() => setActiveTab("payments")}
@@ -144,7 +144,7 @@ const ContentComponent = ({
               : ""
           }`}
         >
-          Payment History
+          付款历史
         </button>
       </div>
 
@@ -154,7 +154,7 @@ const ContentComponent = ({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <User className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium text-sm">Subscription Plan</span>
+          <span className="font-medium text-sm">订阅计划</span>
         </div>
         <div className="pl-6">
           <p className="text-sm break-words">{plan}</p>
@@ -167,17 +167,17 @@ const ContentComponent = ({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <DollarSign className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium text-sm">Pricing</span>
+          <span className="font-medium text-sm">定价</span>
         </div>
         <div className="pl-6 space-y-2">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Amount:</span>
+            <span className="text-sm">金额：</span>
             <span className="font-semibold text-sm break-words text-right">
               {formatWithUserCurrency(amount, currency)}
             </span>
           </div>
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Billing Cycle:</span>
+            <span className="text-sm">账单周期：</span>
             <Badge variant={getBillingCycleBadgeVariant()} className="text-xs h-5 shrink-0">
               {getBillingCycleLabel(billingCycle)}
             </Badge>
@@ -191,22 +191,22 @@ const ContentComponent = ({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <CreditCard className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium text-sm">Payment Details</span>
+          <span className="font-medium text-sm">付款详情</span>
         </div>
         <div className="pl-6 space-y-2">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Payment Method:</span>
+            <span className="text-sm">付款方式：</span>
             <span className="text-sm break-words text-right">{paymentMethodLabel}</span>
           </div>
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Renewal Type:</span>
+            <span className="text-sm">续订类型：</span>
             <div className="flex items-center gap-1.5 shrink-0">
               {renewalType === 'auto' ? (
                 <RotateCcw className="h-3 w-3" />
               ) : (
                 <Hand className="h-3 w-3" />
               )}
-              <span className="text-sm">{renewalType === 'auto' ? 'Automatic' : 'Manual'}</span>
+              <span className="text-sm">{renewalType === 'auto' ? '自动' : '手动'}</span>
             </div>
           </div>
         </div>
@@ -218,28 +218,28 @@ const ContentComponent = ({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium text-sm">Important Dates</span>
+          <span className="font-medium text-sm">重要日期</span>
         </div>
         <div className="pl-6 space-y-2">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Start Date:</span>
+            <span className="text-sm">开始日期：</span>
             <span className="text-sm">{formatDate(startDate)}</span>
           </div>
           {lastBillingDate && (
             <div className="flex items-center justify-between gap-2">
-              <span className="text-sm">Last Payment:</span>
+              <span className="text-sm">上次付款：</span>
               <span className="text-sm">{formatDate(lastBillingDate)}</span>
             </div>
           )}
           <div className="flex items-center justify-between gap-2">
-            <span className="text-sm">Next Payment:</span>
+            <span className="text-sm">下次付款：</span>
             <div className="flex items-center gap-1.5 shrink-0">
               <span className={`text-sm ${isExpiringSoon ? "text-destructive font-medium" : ""}`}>
                 {formatDate(nextBillingDate)}
               </span>
               {isExpiringSoon && status === 'active' && (
                 <Badge variant={getBadgeVariant()} className="text-xs h-5 shrink-0">
-                  {daysLeft === 0 ? "Today" : `${daysLeft} day${daysLeft !== 1 ? 's' : ''}`}
+                  {daysLeft === 0 ? "今天" : `${daysLeft} 天`}
                 </Badge>
               )}
             </div>
@@ -253,7 +253,7 @@ const ContentComponent = ({
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Tag className="h-4 w-4 text-muted-foreground" />
-          <span className="font-medium text-sm">Category</span>
+          <span className="font-medium text-sm">类别</span>
         </div>
         <div className="pl-6">
           <Badge variant="outline" className="text-xs h-5">{categoryLabel}</Badge>
@@ -267,7 +267,7 @@ const ContentComponent = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <FileText className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium text-sm">Notes</span>
+              <span className="font-medium text-sm">备注</span>
             </div>
             <div className="pl-6">
               <p className="text-xs text-muted-foreground whitespace-pre-wrap leading-relaxed">
@@ -285,7 +285,7 @@ const ContentComponent = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Globe className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium text-sm">Website</span>
+              <span className="font-medium text-sm">网站</span>
             </div>
             <div className="pl-6">
               <Button
@@ -295,7 +295,7 @@ const ContentComponent = ({
                 className="gap-2 text-sm h-9 w-full sm:w-auto"
               >
                 <ExternalLink className="h-4 w-4" />
-                Visit Website
+                访问网站
               </Button>
             </div>
           </div>
@@ -314,7 +314,7 @@ const ContentComponent = ({
             className="w-full h-10 text-sm"
             size="default"
           >
-            Edit Subscription
+            编辑订阅
           </Button>
         )}
         {renewalType === 'manual' && status === 'active' && onManualRenew && (
@@ -328,7 +328,7 @@ const ContentComponent = ({
             size="default"
           >
             <RotateCcw className="h-4 w-4" />
-            Renew Now
+            立即续订
           </Button>
         )}
       </div>

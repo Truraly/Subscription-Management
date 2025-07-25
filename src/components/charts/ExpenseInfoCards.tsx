@@ -93,7 +93,7 @@ export function ExpenseInfoCards({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <DollarSign className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Total</span>
+              <span className="text-sm text-muted-foreground">总计</span>
             </div>
             <span className="text-lg font-bold">
               {formatCurrencyAmount(data.totalSpent, currency)}
@@ -104,7 +104,7 @@ export function ExpenseInfoCards({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Daily Avg</span>
+              <span className="text-sm text-muted-foreground">每日平均</span>
             </div>
             <span className="text-sm font-medium">
               {formatCurrencyAmount(data.dailyAverage, currency)}
@@ -115,7 +115,7 @@ export function ExpenseInfoCards({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Payments</span>
+              <span className="text-sm text-muted-foreground">付款</span>
             </div>
             <span className="text-sm font-medium">
               {data.paymentCount}
@@ -132,7 +132,7 @@ export function ExpenseInfoCards({
               handleViewDetails(data)
             }}
           >
-            View Details
+            查看详情
             <ChevronRight className="h-3 w-3 ml-1 group-hover:translate-x-1 transition-transform" />
           </Button>
         </CardContent>
@@ -168,7 +168,7 @@ export function ExpenseInfoCards({
       <div>
         <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
           <Calendar className="h-5 w-5 text-blue-500" />
-          Monthly Expenses
+          月度费用
         </h3>
         {monthlyData.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -177,7 +177,7 @@ export function ExpenseInfoCards({
         ) : (
           <Card>
             <CardContent className="flex items-center justify-center h-32">
-              <p className="text-muted-foreground">No monthly data available</p>
+              <p className="text-muted-foreground">无可用月度数据</p>
             </CardContent>
           </Card>
         )}
@@ -187,7 +187,7 @@ export function ExpenseInfoCards({
       <div>
         <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
           <Calendar className="h-5 w-5 text-green-500" />
-          Quarterly Expenses
+          季度费用
         </h3>
         {quarterlyData.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -196,7 +196,7 @@ export function ExpenseInfoCards({
         ) : (
           <Card>
             <CardContent className="flex items-center justify-center h-32">
-              <p className="text-muted-foreground">No quarterly data available</p>
+              <p className="text-muted-foreground">无可用季度数据</p>
             </CardContent>
           </Card>
         )}
@@ -206,7 +206,7 @@ export function ExpenseInfoCards({
       <div>
         <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
           <Calendar className="h-5 w-5 text-purple-500" />
-          Yearly Expenses
+          年度费用
         </h3>
         {yearlyData.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -215,7 +215,7 @@ export function ExpenseInfoCards({
         ) : (
           <Card>
             <CardContent className="flex items-center justify-center h-32">
-              <p className="text-muted-foreground">No yearly data available</p>
+              <p className="text-muted-foreground">无可用年度数据</p>
             </CardContent>
           </Card>
         )}

@@ -346,7 +346,7 @@ export function SubscriptionsPage() {
       <div className="flex items-center justify-center h-[calc(100vh-16rem)]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-lg font-medium">Loading subscriptions...</p>
+          <p className="text-lg font-medium">正在加载订阅...</p>
         </div>
       </div>
     )
@@ -357,9 +357,9 @@ export function SubscriptionsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Subscriptions</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">订阅</h1>
           <p className="text-muted-foreground">
-            Manage all your subscription services
+            管理您的所有订阅服务
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -371,7 +371,7 @@ export function SubscriptionsPage() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Add Subscription</p>
+                <p>添加订阅</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -384,7 +384,7 @@ export function SubscriptionsPage() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Import</p>
+                <p>导入</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -397,7 +397,7 @@ export function SubscriptionsPage() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Export</p>
+                <p>导出</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -408,7 +408,7 @@ export function SubscriptionsPage() {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-3">
         <div className="flex items-center gap-2 w-full max-w-sm">
           <SearchInput
-            placeholder="Search subscriptions..."
+            placeholder="搜索订阅..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full"
@@ -429,7 +429,7 @@ export function SubscriptionsPage() {
             <PopoverContent className="w-56 p-0" align="end">
               <div className="p-2">
                 <div className="font-medium text-sm flex items-center justify-between">
-                  <span>Filter by Category</span>
+                  <span>按类别筛选</span>
                   {selectedCategories.length > 0 && (
                     <Button
                       variant="ghost"
@@ -437,7 +437,7 @@ export function SubscriptionsPage() {
                       className="h-6 text-xs"
                       onClick={() => setSelectedCategories([])}
                     >
-                      Reset
+                      重置
                     </Button>
                   )}
                 </div>
@@ -458,7 +458,8 @@ export function SubscriptionsPage() {
                       selectedCategories.includes(category.value)
                         ? "border-primary bg-primary text-primary-foreground"
                         : "opacity-50 border-primary"
-                    )}>
+                    )}
+                    >
                       {selectedCategories.includes(category.value) && (
                         <Check className="h-3 w-3" />
                       )}
@@ -488,7 +489,7 @@ export function SubscriptionsPage() {
             <PopoverContent className="w-56 p-0" align="end">
               <div className="p-2">
                 <div className="font-medium text-sm flex items-center justify-between">
-                  <span>Filter by Billing Cycle</span>
+                  <span>按账单周期筛选</span>
                   {selectedBillingCycles.length > 0 && (
                     <Button
                       variant="ghost"
@@ -496,7 +497,7 @@ export function SubscriptionsPage() {
                       className="h-6 text-xs"
                       onClick={() => setSelectedBillingCycles([])}
                     >
-                      Reset
+                      重置
                     </Button>
                   )}
                 </div>
@@ -517,7 +518,8 @@ export function SubscriptionsPage() {
                       selectedBillingCycles.includes(cycle.value as BillingCycle)
                         ? "border-primary bg-primary text-primary-foreground"
                         : "opacity-50 border-primary"
-                    )}>
+                    )}
+                    >
                       {selectedBillingCycles.includes(cycle.value as BillingCycle) && (
                         <Check className="h-3 w-3" />
                       )}
@@ -547,7 +549,7 @@ export function SubscriptionsPage() {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Sort by Next Billing Date ({sortOrder === 'asc' ? 'Ascending' : 'Descending'})</p>
+                <p>按下次计费日期排序 ({sortOrder === 'asc' ? '升序' : '降序'})</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -558,19 +560,19 @@ export function SubscriptionsPage() {
             variant={currentView === "all" ? "default" : "outline"}
             onClick={() => setCurrentView("all")}
           >
-            All
+            全部
           </Button>
           <Button
             variant={currentView === "active" ? "default" : "outline"}
             onClick={() => setCurrentView("active")}
           >
-            Active
+            有效的
           </Button>
           <Button
             variant={currentView === "cancelled" ? "default" : "outline"}
             onClick={() => setCurrentView("cancelled")}
           >
-            Cancelled
+            已取消
           </Button>
         </div>
       </div>
@@ -591,7 +593,7 @@ export function SubscriptionsPage() {
                   onClick={() => toggleCategoryFilter(categoryValue)}
                   className="ml-1 rounded-full hover:bg-muted-foreground/20 p-0.5"
                 >
-                  <span className="sr-only">Remove</span>
+                  <span className="sr-only">移除</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -625,7 +627,7 @@ export function SubscriptionsPage() {
                   onClick={() => toggleBillingCycleFilter(cycleValue)}
                   className="ml-1 rounded-full hover:bg-muted-foreground/20 p-0.5"
                 >
-                  <span className="sr-only">Remove</span>
+                  <span className="sr-only">移除</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -680,23 +682,23 @@ export function SubscriptionsPage() {
       ) : sortedSubscriptions.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <Calendar className="h-12 w-12 text-muted-foreground opacity-50 mb-4" />
-          <h3 className="text-lg font-medium mb-1">No subscriptions found</h3>
+          <h3 className="text-lg font-medium mb-1">未找到订阅</h3>
           <p className="text-muted-foreground mb-4">
             {searchTerm || selectedCategories.length > 0 || selectedBillingCycles.length > 0
-              ? `No results for your current filters. Try changing your search terms or filters.`
+              ? `当前筛选条件下无结果。请尝试更改搜索词或筛选器。`
               : currentView !== "all"
-                ? `You don't have any ${currentView} subscriptions.`
-                : "Get started by adding your first subscription."
+                ? `您没有任何${currentView === 'active' ? '有效的' : '已取消'}的订阅。`
+                : "从添加您的第一个订阅开始吧。"
             }
           </p>
           <div className="flex gap-2">
             <Button onClick={() => setShowAddForm(true)}>
               <Plus className="h-4 w-4 mr-2" />
-              Add Subscription
+              添加订阅
             </Button>
             <Button variant="outline" onClick={() => setShowImportModal(true)}>
               <Upload className="h-4 w-4 mr-2" />
-              Import Subscriptions
+              导入订阅
             </Button>
           </div>
         </div>

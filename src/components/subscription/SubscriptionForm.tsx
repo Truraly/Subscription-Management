@@ -151,17 +151,17 @@ export function SubscriptionForm({
       <DialogContent className="sm:max-w-[500px]">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>{initialData ? "Edit Subscription" : "Add New Subscription"}</DialogTitle>
+            <DialogTitle>{initialData ? "编辑订阅" : "添加新订阅"}</DialogTitle>
             <DialogDescription>
               {initialData 
-                ? "Update your subscription details below" 
-                : "Enter the details of your subscription below"
+                ? "在下方更新您的订阅详情" 
+                : "在下方输入您的订阅详情"
               }
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             {/* Subscription name */}
-            <FormField label="Name" error={errors.name} required>
+            <FormField label="名称" error={errors.name} required>
               <Input
                 id="name"
                 name="name"
@@ -172,13 +172,13 @@ export function SubscriptionForm({
             </FormField>
 
             {/* Subscription plan */}
-            <FormField label="Plan" error={errors.plan} required>
+            <FormField label="计划" error={errors.plan} required>
               <Input
                 id="plan"
                 name="plan"
                 value={form.plan}
                 onChange={handleChange}
-                placeholder="e.g., Premium, Family, Basic..."
+                placeholder="例如：高级版、家庭版、基础版..."
                 className={errors.plan ? "border-destructive" : ""}
               />
             </FormField>
@@ -201,18 +201,18 @@ export function SubscriptionForm({
             />
 
             {/* Billing Cycle */}
-            <FormField label="Billing Cycle" required>
+            <FormField label="账单周期" required>
               <Select 
                 value={form.billingCycle} 
                 onValueChange={(value) => handleSelectChange("billingCycle", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select billing cycle" />
+                  <SelectValue placeholder="选择账单周期" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="monthly">Monthly</SelectItem>
-                  <SelectItem value="yearly">Yearly</SelectItem>
-                  <SelectItem value="quarterly">Quarterly</SelectItem>
+                  <SelectItem value="monthly">按月</SelectItem>
+                  <SelectItem value="yearly">按年</SelectItem>
+                  <SelectItem value="quarterly">按季度</SelectItem>
                 </SelectContent>
               </Select>
             </FormField>
@@ -228,7 +228,7 @@ export function SubscriptionForm({
             />
 
             {/* Start Date */}
-            <FormField label="Start Date">
+            <FormField label="开始日期">
               <DatePicker
                 value={form.startDate ? new Date(form.startDate) : undefined}
                 onChange={(date) => {
@@ -236,45 +236,45 @@ export function SubscriptionForm({
                     handleFieldChange('startDate', format(date, "yyyy-MM-dd"), setForm, errors, setErrors)
                   }
                 }}
-                placeholder="Pick a date"
+                placeholder="选择一个日期"
               />
             </FormField>
 
             {/* Status */}
-            <FormField label="Status">
+            <FormField label="状态">
               <Select
                 value={form.status}
                 onValueChange={(value: "active" | "trial" | "cancelled") => handleSelectChange("status", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select status" />
+                  <SelectValue placeholder="选择状态" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="trial">Trial</SelectItem>
-                  <SelectItem value="cancelled">Cancelled</SelectItem>
+                  <SelectItem value="active">有效的</SelectItem>
+                  <SelectItem value="trial">试用</SelectItem>
+                  <SelectItem value="cancelled">已取消</SelectItem>
                 </SelectContent>
               </Select>
             </FormField>
 
             {/* Renewal Type */}
-            <FormField label="Renewal Type">
+            <FormField label="续订类型">
               <Select
                 value={form.renewalType}
                 onValueChange={(value: "auto" | "manual") => handleSelectChange("renewalType", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select renewal type" />
+                  <SelectValue placeholder="选择续订类型" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="auto">Automatic Renewal</SelectItem>
-                  <SelectItem value="manual">Manual Renewal</SelectItem>
+                  <SelectItem value="auto">自动续订</SelectItem>
+                  <SelectItem value="manual">手动续订</SelectItem>
                 </SelectContent>
               </Select>
             </FormField>
 
             {/* Website */}
-            <FormField label="Website">
+            <FormField label="网站">
               <Input
                 id="website"
                 name="website"
@@ -285,23 +285,23 @@ export function SubscriptionForm({
             </FormField>
 
             {/* Notes */}
-            <FormField label="Notes">
+            <FormField label="备注">
               <Textarea
                 id="notes"
                 name="notes"
                 value={form.notes || ""}
                 onChange={handleChange}
-                placeholder="Any additional information..."
+                placeholder="任何附加信息..."
               />
             </FormField>
           </div>
           
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              取消
             </Button>
             <Button type="submit">
-              {initialData ? "Update" : "Add"} Subscription
+              {initialData ? "更新" : "添加"} 订阅
             </Button>
           </DialogFooter>
         </form>

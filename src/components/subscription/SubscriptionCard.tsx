@@ -123,7 +123,7 @@ export function SubscriptionCard({
               onClick={(e) => e.stopPropagation()}
             >
               <MoreVertical className="h-4 w-4" />
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">打开菜单</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -132,7 +132,7 @@ export function SubscriptionCard({
               onEdit(id)
             }}>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit
+              编辑
             </DropdownMenuItem>
             {status === 'active' ? (
               <DropdownMenuItem onClick={(e) => {
@@ -140,7 +140,7 @@ export function SubscriptionCard({
                 onStatusChange(id, 'cancelled')
               }}>
                 <Ban className="mr-2 h-4 w-4" />
-                Cancel
+                取消
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem onClick={(e) => {
@@ -148,7 +148,7 @@ export function SubscriptionCard({
                 onStatusChange(id, 'active')
               }}>
                 <Calendar className="mr-2 h-4 w-4" />
-                Reactivate
+                重新激活
               </DropdownMenuItem>
             )}
             <DropdownMenuItem
@@ -159,7 +159,7 @@ export function SubscriptionCard({
               className="text-destructive focus:text-destructive"
             >
               <Trash2 className="mr-2 h-4 w-4" />
-              Delete
+              删除
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -181,13 +181,13 @@ export function SubscriptionCard({
           <div className="flex items-center gap-2 text-muted-foreground">
             <Calendar className="h-4 w-4" />
             <div className="flex items-center gap-2">
-              <span>Next payment:</span>
+              <span>下次付款：</span>
               <span className={isExpiringSoon ? "text-destructive font-medium" : ""}>
                 {formatDate(nextBillingDate)}
               </span>
               {isExpiringSoon && status === 'active' && (
                 <Badge variant={getBadgeVariant()}>
-                  {daysLeft === 0 ? "Today" : `${daysLeft} day${daysLeft !== 1 ? 's' : ''}`}
+                  {daysLeft === 0 ? "今天" : `${daysLeft} 天`}
                 </Badge>
               )}
             </div>
@@ -202,7 +202,7 @@ export function SubscriptionCard({
             ) : (
               <Hand className="h-4 w-4" />
             )}
-            <span>{renewalType === 'auto' ? 'Automatic Renewal' : 'Manual Renewal'}</span>
+            <span>{renewalType === 'auto' ? '自动续订' : '手动续订'}</span>
           </div>
         </div>
       </CardContent>

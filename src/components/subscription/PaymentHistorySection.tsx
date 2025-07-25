@@ -38,10 +38,10 @@ export function PaymentHistorySection({ subscriptionId, subscriptionName }: Paym
       const transformedPayments = transformPaymentsFromApi(response.payments || response.data || response || [])
       setPayments(transformedPayments)
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to load payment history'
+      const errorMessage = err instanceof Error ? err.message : '加载付款历史失败'
       setError(errorMessage)
       toast({
-        title: "Error",
+        title: "错误",
         description: errorMessage,
         variant: "destructive",
       })

@@ -53,13 +53,13 @@ export function CategoryPieChart({ data, currency, className }: CategoryPieChart
   return (
     <Card className={className}>
       <CardHeader>
-        <CardTitle className="text-lg">Spending by Category</CardTitle>
-        <CardDescription>Breakdown of expenses by subscription category (Last 12 months)</CardDescription>
+        <CardTitle className="text-lg">按类别支出</CardTitle>
+        <CardDescription>按订阅类别划分的费用明细（过去 12 个月）</CardDescription>
       </CardHeader>
       <CardContent className="px-2 sm:px-6">
         {data.length === 0 ? (
           <div className="flex items-center justify-center h-[200px] sm:h-[250px] lg:h-[300px] text-muted-foreground">
-            No category data available
+            无可用类别数据
           </div>
         ) : (
           <>
@@ -93,13 +93,13 @@ export function CategoryPieChart({ data, currency, className }: CategoryPieChart
                                 <div className="font-medium">{data.label}</div>
                                 <div className="grid gap-1 text-sm">
                                   <div className="flex items-center justify-between gap-2">
-                                    <span className="text-muted-foreground">Amount:</span>
+                                    <span className="text-muted-foreground">金额：</span>
                                     <span className="font-medium">
                                       {formatCurrencyAmount(data.amount, currency)}
                                     </span>
                                   </div>
                                   <div className="flex items-center justify-between gap-2">
-                                    <span className="text-muted-foreground">Percentage:</span>
+                                    <span className="text-muted-foreground">百分比：</span>
                                     <span className="font-medium">{data.percentage.toFixed(1)}%</span>
                                   </div>
                                 </div>

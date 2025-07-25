@@ -36,7 +36,7 @@ export function ExpenseReportsPage() {
   const { currency: userCurrency, fetchSettings } = useSettingsStore()
   
   // Filter states
-  const [selectedDateRange, setSelectedDateRange] = useState('Last 12 Months')
+  const [selectedDateRange, setSelectedDateRange] = useState('过去 12 个月')
   const [selectedYearlyDateRange, setSelectedYearlyDateRange] = useState(() => {
     const currentYear = new Date().getFullYear()
     return `${currentYear - 2} - ${currentYear}`

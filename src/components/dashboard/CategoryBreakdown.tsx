@@ -37,14 +37,14 @@ export function CategoryBreakdown({ data }: CategoryBreakdownProps) {
   return (
     <Card className="min-h-[200px] flex flex-col">
       <CardHeader className="flex-shrink-0">
-        <CardTitle className="text-lg">Spending by Category</CardTitle>
-        <CardDescription>Annual breakdown by category</CardDescription>
+        <CardTitle className="text-lg">按类别支出</CardTitle>
+        <CardDescription>按类别的年度明细</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
         {sortedCategories.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center">
             <p className="text-muted-foreground">
-              No spending data available
+              无可用支出数据
             </p>
           </div>
         ) : (

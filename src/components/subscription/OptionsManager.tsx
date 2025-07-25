@@ -43,28 +43,28 @@ function EditDialog({ open, onOpenChange, title, currentLabel, onSave }: EditDia
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit {title}</DialogTitle>
+          <DialogTitle>编辑{title}</DialogTitle>
           <DialogDescription>
-            Update the name for this {title.toLowerCase()}.
+            更新此{title.toLowerCase()}的名称。
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           <div>
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">名称</Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder={`Enter ${title.toLowerCase()} name...`}
+              placeholder={`输入${title.toLowerCase()}名称...`}
             />
           </div>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button onClick={handleSave} disabled={!name.trim()}>
-            Save Changes
+            保存更改
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -94,28 +94,28 @@ function AddDialog({ open, onOpenChange, title, onAdd }: AddDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add New {title}</DialogTitle>
+          <DialogTitle>添加新的{title}</DialogTitle>
           <DialogDescription>
-            Create a new {title.toLowerCase()} option.
+            创建一个新的{title.toLowerCase()}选项。
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
           <div>
-            <Label htmlFor="new-name">Name</Label>
+            <Label htmlFor="new-name">名称</Label>
             <Input
               id="new-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder={`Enter ${title.toLowerCase()} name...`}
+              placeholder={`输入${title.toLowerCase()}名称...`}
             />
           </div>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            取消
           </Button>
           <Button onClick={handleAdd} disabled={!name.trim()}>
-            Add {title}
+            添加{title}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -220,13 +220,13 @@ export function OptionsManager() {
       }
 
       toast({
-        title: "Option updated",
-        description: `${type} option has been updated successfully.`
+        title: "选项已更新",
+        description: `${type}选项已成功更新。`
       })
     } catch (error) {
       toast({
-        title: "Error",
-        description: `Failed to update ${type} option.`,
+        title: "错误",
+        description: `更新${type}选项失败。`,
         variant: "destructive"
       })
     }
@@ -246,13 +246,13 @@ export function OptionsManager() {
       }
 
       toast({
-        title: "Option deleted",
-        description: `${deleteTarget.type} option has been deleted successfully.`
+        title: "选项已删除",
+        description: `${deleteTarget.type}选项已成功删除。`
       })
     } catch (error) {
       toast({
-        title: "Error",
-        description: `Failed to delete ${deleteTarget.type} option.`,
+        title: "错误",
+        description: `删除${deleteTarget.type}选项失败。`,
         variant: "destructive"
       })
     }
@@ -261,9 +261,9 @@ export function OptionsManager() {
   }
   
   const deleteConfirmation = useConfirmation({
-    title: deleteTarget?.type === 'category' ? "Delete Category" : "Delete Payment Method",
-    description: deleteTarget ? `Are you sure you want to delete "${deleteTarget.label}"? Any subscriptions using this ${deleteTarget.type} will need to be updated.` : "",
-    confirmText: "Delete",
+    title: deleteTarget?.type === 'category' ? "删除类别" : "删除付款方式",
+    description: deleteTarget ? `您确定要删除“${deleteTarget.label}”吗？任何使用此${deleteTarget.type}的订阅都需要更新。` : "",
+    confirmText: "删除",
     onConfirm: handleDelete,
   })
   
@@ -293,13 +293,13 @@ export function OptionsManager() {
       }
 
       toast({
-        title: "Option added",
-        description: `New ${type} option has been added successfully.`
+        title: "选项已添加",
+        description: `新的${type}选项已成功添加。`
       })
     } catch (error) {
       toast({
-        title: "Error",
-        description: `Failed to add ${type} option.`,
+        title: "错误",
+        description: `添加${type}选项失败。`,
         variant: "destructive"
       })
     }
@@ -309,8 +309,8 @@ export function OptionsManager() {
     <div className="space-y-6">
       <Tabs defaultValue="categories" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="categories">Categories</TabsTrigger>
-          <TabsTrigger value="payment-methods">Payment Methods</TabsTrigger>
+          <TabsTrigger value="categories">类别</TabsTrigger>
+          <TabsTrigger value="payment-methods">付款方式</TabsTrigger>
         </TabsList>
 
         <TabsContent value="categories">
@@ -318,14 +318,14 @@ export function OptionsManager() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Categories</CardTitle>
+                  <CardTitle>类别</CardTitle>
                   <CardDescription>
-                    Manage subscription categories for better organization.
+                    管理订阅类别以便更好地组织。
                   </CardDescription>
                 </div>
                 <Button onClick={() => handleAdd('category')}>
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Category
+                  添加类别
                 </Button>
               </div>
             </CardHeader>
@@ -350,14 +350,14 @@ export function OptionsManager() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Payment Methods</CardTitle>
+                  <CardTitle>付款方式</CardTitle>
                   <CardDescription>
-                    Manage available payment methods for your subscriptions.
+                    管理您订阅的可用付款方式。
                   </CardDescription>
                 </div>
                 <Button onClick={() => handleAdd('payment')}>
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Payment Method
+                  添加付款方式
                 </Button>
               </div>
             </CardHeader>
@@ -384,7 +384,7 @@ export function OptionsManager() {
       <EditDialog
         open={editDialog.open}
         onOpenChange={(open) => setEditDialog(prev => ({ ...prev, open }))}
-        title={editDialog.type === 'category' ? 'Category' : editDialog.type === 'payment' ? 'Payment Method' : 'Plan'}
+        title={editDialog.type === 'category' ? '类别' : editDialog.type === 'payment' ? '付款方式' : '计划'}
         currentLabel={editDialog.label}
         onSave={handleSaveEdit}
       />
@@ -393,7 +393,7 @@ export function OptionsManager() {
       <AddDialog
         open={addDialog.open}
         onOpenChange={(open) => setAddDialog(prev => ({ ...prev, open }))}
-        title={addDialog.type === 'category' ? 'Category' : addDialog.type === 'payment' ? 'Payment Method' : 'Plan'}
+        title={addDialog.type === 'category' ? '类别' : addDialog.type === 'payment' ? '付款方式' : '计划'}
         onAdd={handleSaveAdd}
       />
       

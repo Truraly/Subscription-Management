@@ -25,32 +25,32 @@ interface YearlyCategoryExpenseData {
 
 const chartConfig = {
   amount: {
-    label: "Amount",
+    label: "金额",
     color: "hsl(var(--chart-2))",
   },
   // 预定义类别颜色
   streaming: {
-    label: "Streaming",
+    label: "流媒体",
     color: "hsl(var(--chart-1))",
   },
   productivity: {
-    label: "Productivity",
+    label: "生产力",
     color: "hsl(var(--chart-2))",
   },
   cloud: {
-    label: "Cloud Services",
+    label: "云服务",
     color: "hsl(var(--chart-3))",
   },
   entertainment: {
-    label: "Entertainment",
+    label: "娱乐",
     color: "hsl(var(--chart-4))",
   },
   fitness: {
-    label: "Fitness",
+    label: "健身",
     color: "hsl(var(--chart-5))",
   },
   other: {
-    label: "Other",
+    label: "其他",
     color: "hsl(var(--muted-foreground))",
   },
 } satisfies ChartConfig
@@ -114,13 +114,13 @@ export function YearlyTrendChart({ data, categoryData, currency, className }: Ye
                       <div className="font-medium">{label}</div>
                       <div className="grid gap-1 text-sm">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-muted-foreground">Amount:</span>
+                          <span className="text-muted-foreground">金额：</span>
                           <span className="font-medium">
                             {formatCurrencyAmount(data.amount, currency)}
                           </span>
                         </div>
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-muted-foreground">Subscriptions:</span>
+                          <span className="text-muted-foreground">订阅：</span>
                           <span className="font-medium">{data.subscriptionCount}</span>
                         </div>
                       </div>
@@ -191,7 +191,7 @@ export function YearlyTrendChart({ data, categoryData, currency, className }: Ye
                         ))}
                         <div className="border-t pt-1 mt-1">
                           <div className="flex items-center justify-between gap-2">
-                            <span className="text-muted-foreground font-medium">Total:</span>
+                            <span className="text-muted-foreground font-medium">总计：</span>
                             <span className="font-semibold">
                               {formatCurrencyAmount(
                                 payload.reduce((sum, entry) => sum + (entry.value as number), 0), 
@@ -226,11 +226,11 @@ export function YearlyTrendChart({ data, categoryData, currency, className }: Ye
     <Card className={className}>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <div>
-          <CardTitle className="text-lg">Yearly Trends</CardTitle>
+          <CardTitle className="text-lg">年度趋势</CardTitle>
           <CardDescription>
             {chartType === 'line' 
-              ? 'Annual spending over time'
-              : 'Annual spending by category'
+              ? '年度支出随时间变化'
+              : '按类别划分的年度支出'
             }
           </CardDescription>
         </div>
@@ -261,8 +261,8 @@ export function YearlyTrendChart({ data, categoryData, currency, className }: Ye
         {(chartType === 'line' ? data.length === 0 : !categoryData || categoryData.length === 0) ? (
           <div className="flex items-center justify-center h-[300px] text-muted-foreground">
             {chartType === 'line' 
-              ? 'No yearly data available'
-              : 'No yearly category data available'
+              ? '无可用年度数据'
+              : '无可用年度类别数据'
             }
           </div>
         ) : (
